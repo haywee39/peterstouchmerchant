@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 216 50% 4%;
+    --foreground: 213 35% 96%;
+    --card: 216 45% 8%;
+    --card-foreground: 213 35% 96%;
+    --popover: 216 45% 8%;
+    --popover-foreground: 213 35% 96%;
+    --primary: 200 100% 65%;
+    --primary-foreground: 216 50% 4%;
+    --secondary: 216 35% 12%;
+    --secondary-foreground: 213 35% 96%;
+    --muted: 216 35% 12%;
+    --muted-foreground: 213 20% 65%;
+    --accent: 200 100% 65%;
+    --accent-foreground: 216 50% 4%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 213 20% 20%;
+    --input: 216 35% 12%;
+    --ring: 200 100% 65%;
+    --radius: 0.625rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    background-color: #050B14;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+  }
+  
+  .font-mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #F4F7FB 0%, #4DB8FF 100%);
+  }
+  
+  .glass-card {
+    background: rgba(11, 22, 38, 0.72);
+    border: 1px solid rgba(244, 247, 251, 0.12);
+    backdrop-filter: blur(12px);
+  }
+  
+  .accent-glow {
+    box-shadow: 0 0 40px rgba(77, 184, 255, 0.3);
+  }
+  
+  .hairline {
+    @apply h-px w-full;
+    background: rgba(244, 247, 251, 0.12);
+  }
+  
+  .section-padding {
+    @apply px-6 md:px-[6vw];
+  }
+  
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all duration-300;
+    background: #4DB8FF;
+    color: #050B14;
+  }
+  
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(77, 184, 255, 0.4);
+  }
+  
+  .btn-outline {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all duration-300 border;
+    border-color: rgba(77, 184, 255, 0.5);
+    color: #4DB8FF;
+  }
+  
+  .btn-outline:hover {
+    background: rgba(77, 184, 255, 0.1);
+    border-color: #4DB8FF;
+  }
+  
+  .label-mono {
+    @apply font-mono text-xs uppercase tracking-[0.12em] font-medium;
+    color: #4DB8FF;
+  }
+}
+
+@layer utilities {
+  .text-primary-light {
+    color: #F4F7FB;
+  }
+  
+  .text-secondary-light {
+    color: #A7B3C2;
+  }
+  
+  .bg-navy-primary {
+    background-color: #050B14;
+  }
+  
+  .bg-navy-secondary {
+    background-color: #0B1626;
+  }
+  
+  .text-accent-cyan {
+    color: #4DB8FF;
+  }
+  
+  .bg-accent-cyan {
+    background-color: #4DB8FF;
+  }
+}
+
+/* Noise overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #050B14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(77, 184, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(77, 184, 255, 0.5);
+}
+
+/* Selection styling */
+::selection {
+  background: rgba(77, 184, 255, 0.3);
+  color: #F4F7FB;
+}
