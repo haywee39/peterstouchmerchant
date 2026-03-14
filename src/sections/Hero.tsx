@@ -106,7 +106,7 @@ export default function Hero() {
         style={{ opacity: 0 }}
       >
         <img
-          src="/images/hero_stage_led.jpg"
+          src="public/images/hero_stage_led.jpg"
           alt="LED Stage"
           className="w-full h-full object-cover"
         />
@@ -126,7 +126,7 @@ export default function Hero() {
         <div className="text-center max-w-[1100px] mx-auto" style={{ marginTop: '-20vh' }}>
           <h1
             ref={headlineRef}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[45px] font-bold text-text-primary leading-[0.95] tracking-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[42px] font-bold text-text-primary leading-[0.95] tracking-tight"
             style={{ opacity: 0 }}
           >
             Transforming Spaces with 
@@ -137,7 +137,7 @@ export default function Hero() {
           </h1>
           <p
             ref={subheadlineRef}
-            className="label-mono mt-5 md:mt-8 xl:text-[25px] text-[20px]"
+            className="label-mono mt-5 md:mt-8 xl:text-[22px] text-[15px]"
             style={{ opacity: 0 }}
           >
             LED DISPLAYS • AUDIO • STAGING
@@ -173,7 +173,7 @@ export default function Hero() {
               onClick={() => scrollToSection('#contact')} 
               className="btn-primary w-full mb-4"
             >
-              Request a quote
+              Request a Quote
             </button>
             <button
               onClick={() => scrollToSection('#portfolio')}
@@ -181,7 +181,7 @@ export default function Hero() {
             >
               View selected work
               <ArrowRight
-                size={20}
+                size={25}
                 className="transform group-hover:translate-x-1 transition-transform"
               />
             </button>

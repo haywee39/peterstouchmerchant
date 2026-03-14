@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Download } from 'lucide-react';
+// import { Download } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -122,7 +122,7 @@ export default function Process() {
       {/* Background Image */}
       <div ref={bgRef} className="absolute inset-0 z-[1]">
         <img
-          src="/images/process_lighting_beams.jpg"
+          src="public/images/process_lighting_beams.jpg"
           alt="Stage Lighting"
           className="w-full h-full object-cover"
         />
@@ -149,7 +149,7 @@ export default function Process() {
           >
             <img
               // src="/images/process_lighting_beams.jpg"
-              src="/images/logoB.png"
+              src="public/images/logoB.png"
               alt="Process Lighting"
               className="w-full h-full object-cover"
             />

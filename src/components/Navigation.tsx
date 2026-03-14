@@ -39,14 +39,14 @@ export default function Navigation() {
         }`}
       >
         <div className="section-padding py-4 md:py-5">
-          <div className="flex items-center justify-around">
+          <div className="flex items-center justify-between">
             {/* Logo */}
 
             <a href="Hero.tsx"> 
               <img
-                src="/images/logoB.png"
+                src="public/images/logoB.png"
                 alt="Logo"
-                width={130}
+                width={140}
               />
             </a>
 
@@ -65,7 +65,7 @@ export default function Navigation() {
                 onClick={() => scrollToSection('#contact')}
                 className="btn-outline text-sm py-2.5 px-5"
               >
-                Request a quote
+                Request a Quote
               </button>
             </div>
 
@@ -101,7 +101,7 @@ export default function Navigation() {
             onClick={() => scrollToSection('#contact')}
             className="btn-primary mt-4"
           >
-            Request a quote
+            Request a Quote
           </button>
         </div>
       </div>
