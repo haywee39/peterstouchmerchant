@@ -106,7 +106,7 @@ export default function Hero() {
         style={{ opacity: 0 }}
       >
         <img
-          src="public/images/hero_stage_led.jpg"
+          src="./images/hero_stage_led.jpg"
           alt="LED Stage"
           className="w-full h-full object-cover"
         />

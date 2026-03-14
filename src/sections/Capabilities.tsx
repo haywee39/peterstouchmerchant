@@ -16,17 +16,17 @@ const cards = [
   {
     title: 'Corporate Events',
     description: 'Keynotes, product launches, expos',
-    image: 'public/images/capabilities_corporate_event.jpg',
+    image: './images/capabilities_corporate_event.jpg',
   },
   {
     title: 'Concerts & Festivals',
     description: 'Tour-ready builds, weather-rated',
-    image: 'public/images/capabilities_festival_stage.jpg',
+    image: './images/capabilities_festival_stage.jpg',
   },
   {
     title: 'Broadcast & Streaming',
     description: 'Camera-friendly refresh rates, low reflection',
-    image: 'public/images/capabilities_broadcast_studio.jpg',
+    image: './images/capabilities_broadcast_studio.jpg',
   },
 ];
 

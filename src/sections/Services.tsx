@@ -146,7 +146,7 @@ export default function Services() {
       {/* Background Image */}
       <div ref={bgRef} className="absolute inset-0 z-[1]">
         <img
-          src="public/images/services_truss_rig.jpg"
+          src="./images/services_truss_rig.jpg"
           alt="Stage Truss Rig"
           className="w-full h-full object-cover"
         />
