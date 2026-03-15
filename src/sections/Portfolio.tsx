@@ -128,8 +128,7 @@ export default function Portfolio() {
           >
             <img
               ref={imageRef}
-              src="./images/portfolio_curved_led.jpg"
-              // src="/images/ptm.jpg"
+              src="images/portfolio_curved_led.jpg"
               alt="Curved LED Installation"
               className="w-full h-full object-cover"
             />
