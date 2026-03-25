@@ -1,6 +1,6 @@
 import { Facebook, MessageCircle, Youtube, Instagram } from 'lucide-react';
 // import { PhoneCall } from 'lucide-react';
-import { Label } from 'recharts';
+// import { Label } from 'recharts';
 
 const navLinks = [
   { label: 'Services', href: '#services' },
