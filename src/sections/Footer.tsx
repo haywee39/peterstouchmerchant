@@ -1,5 +1,6 @@
-import { Instagram, Linkedin, Youtube } from 'lucide-react';
+import { Facebook, MessageCircle, Youtube, Instagram } from 'lucide-react';
 // import { PhoneCall } from 'lucide-react';
+import { Label } from 'recharts';
 
 const navLinks = [
   { label: 'Services', href: '#services' },
@@ -9,9 +10,10 @@ const navLinks = [
 ];
 
 const socialLinks = [
-  { icon: Instagram, href: '#', label: 'Instagram' },
-  { icon: Linkedin, href: '#', label: 'LinkedIn' },
-  { icon: Youtube, href: '#', label: 'YouTube' },
+  { icon: Facebook, href: 'https://www.facebook.com/share/18GQgrYbn7/', label: 'Facebook' },
+  { icon: MessageCircle, href: 'https://wa.me/+2348149946136', label: 'WhatsApp' },
+  // { icon: Youtube, href: '#', label: 'YouTube' },
+  { icon: Instagram, href: 'https://instagram.com/thepeterstouchmerchants', label: 'Instagram'},
 ];
 
 export default function Footer() {
@@ -63,6 +65,8 @@ export default function Footer() {
                 <a
                   key={social.label}
                   href={social.href}
+                  target="_blank"           // This opens it in a new page
+                  rel="noopener noreferrer" // This is for security and performance
                   aria-label={social.label}
                   className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-text-secondary hover:text-cyan-accent hover:bg-cyan-accent/10 transition-all duration-300"
                 >

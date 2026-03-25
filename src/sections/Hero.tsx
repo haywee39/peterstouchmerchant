@@ -153,7 +153,7 @@ export default function Hero() {
       >
         <div className="glass-card rounded-xl p-5 md:p-6">
           <h3 className="text-lg md:text-xl font-bold text-text-primary mb-2">
-            Turnkey event technology
+            Quality Deliverables
           </h3>
           <p className="text-sm md:text-base text-text-secondary leading-relaxed">
             We deliver displays and installations characterized by
