@@ -126,7 +126,7 @@ export default function Hero() {
         <div className="text-center max-w-[1100px] mx-auto" style={{ marginTop: '-20vh' }}>
           <h1
             ref={headlineRef}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[42px] font-bold text-text-primary leading-[0.95] tracking-tight"
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[50px] font-bold text-text-primary leading-[0.95] tracking-tight"
             style={{ opacity: 0 }}
           >
             Transforming Spaces with 
@@ -137,7 +137,7 @@ export default function Hero() {
           </h1>
           <p
             ref={subheadlineRef}
-            className="label-mono mt-5 md:mt-8 xl:text-[22px] text-[15px]"
+            className="label-mono mt-5 md:mt-8 xl:text-[22px] text-[13px]"
             style={{ opacity: 0 }}
           >
             LED DISPLAYS • AUDIO • STAGING

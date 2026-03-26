@@ -46,7 +46,7 @@ export default function Navigation() {
               <img
                 src="public/images/logoB.png"
                 alt="Logo"
-                width={140}
+                width={145}
               />
             </a>
 
