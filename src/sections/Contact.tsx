@@ -81,9 +81,8 @@ export default function Contact() {
           email: formData.email,
           message: formData.message,
           subject: `New Inquiry from ${formData.name}`,
-          // ADD THESE TO CUSTOMIZE THE EMAIL YOU RECEIVE:
+          // TO CUSTOMIZE THE EMAIL YOU RECEIVE:
             from_name: "The Peterstouch Merchants Website Contact Form",
-            // subject: `New Project Inquiry from ${formData.name}`,
             replyto: formData.email, // This lets you click "Reply" in Gmail to email the client back directly!
         }),
       });
