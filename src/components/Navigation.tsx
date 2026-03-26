@@ -44,7 +44,7 @@ export default function Navigation() {
 
             <a href="Hero.tsx"> 
               <img
-                src="public/images/logoB.png"
+                src="images/logoB.png"
                 alt="Logo"
                 width={145}
               />

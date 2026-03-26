@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Mail, MapPin, PhoneCall, Send } from 'lucide-react';
+import { Mail, MapPin, PhoneCall, Send, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -14,9 +14,10 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    eventDate: '',
     message: '',
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -61,10 +62,45 @@ export default function Contact() {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // ACTIVE FORM SUBMIT LOGIC
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success('Inquiry sent! We will get back to you within 24 hours.');
-    setFormData({ name: '', email: '', eventDate: '', message: '' });
+    setIsSubmitting(true);
+
+    try {
+      // Sending to Web3Forms API
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "f3fa9ca7-399b-4d0b-86af-a05f47a8474b", // GET YOUR KEY AT web3forms.com
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          subject: `New Inquiry from ${formData.name}`,
+          // ADD THESE TO CUSTOMIZE THE EMAIL YOU RECEIVE:
+            from_name: "The Peterstouch Merchants Website Contact Form",
+            subject: `New Project Inquiry from ${formData.name}`,
+            replyto: formData.email, // This lets you click "Reply" in Gmail to email the client back directly!
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast.success('Inquiry sent! We will get back to you within 24 hours.');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        toast.error('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      toast.error('Network error. Please check your connection.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -126,7 +162,7 @@ export default function Contact() {
           <div ref={formRef}>
             <form
               onSubmit={handleSubmit}
-              className="glass-card rounded-xl p-6 md:p-8"
+              className="glass-card rounded-xl p-6 md:p-8 border border-white/5"
             >
               <div className="space-y-5">
                 <div>
@@ -159,19 +195,6 @@ export default function Contact() {
                   />
                 </div>
 
-                {/* <div>
-                  <label className="block text-text-secondary text-sm mb-2">
-                    Event Date
-                  </label>
-                  <input
-                    type="date"
-                    name="eventDate"
-                    value={formData.eventDate}
-                    onChange={handleChange}
-                    className="w-full bg-navy-primary/50 border border-white/10 rounded-lg px-4 py-3 text-text-primary text-sm focus:outline-none focus:border-cyan-accent/50 transition-colors"
-                  />
-                </div> */}
-
                 <div>
                   <label className="block text-text-secondary text-sm mb-2">
                     Message
@@ -189,10 +212,15 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="btn-primary w-full gap-2"
+                  disabled={isSubmitting}
+                  className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed transition-all"
                 >
-                  <Send size={16} />
-                  Send inquiry
+                  {isSubmitting ? (
+                    <Loader2 size={18} className="animate-spin" />
+                  ) : (
+                    <Send size={16} />
+                  )}
+                  {isSubmitting ? 'Sending...' : 'Send inquiry'}
                 </button>
 
                 <p className="text-text-secondary/60 text-xs text-center">
