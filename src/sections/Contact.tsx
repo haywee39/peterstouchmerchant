@@ -8,27 +8,22 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
-  const leftRef = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLDivElement>(null);
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const section = sectionRef.current;
-    const left = leftRef.current;
-    const form = formRef.current;
+    if (!section) return;
 
-    if (!section || !left || !form) return;
+    const ctx = gsap.context((self) => {
+      const q = self.selector!;
+      
+      // Select elements using scoping classes instead of individual hooks
+      const leftCol = q('.contact-left');
+      const rightCol = q('.contact-right');
 
-    const ctx = gsap.context(() => {
       gsap.fromTo(
-        left,
+        leftCol,
         { x: -40, opacity: 0 },
         {
           x: 0,
@@ -43,7 +38,7 @@ export default function Contact() {
       );
 
       gsap.fromTo(
-        form,
+        rightCol,
         { x: 40, opacity: 0, scale: 0.98 },
         {
           x: 0,
@@ -62,13 +57,11 @@ export default function Contact() {
     return () => ctx.revert();
   }, []);
 
-  // ACTIVE FORM SUBMIT LOGIC
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     try {
-      // Sending to Web3Forms API
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -76,14 +69,13 @@ export default function Contact() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "f3fa9ca7-399b-4d0b-86af-a05f47a8474b", // GET YOUR KEY AT web3forms.com
+          access_key: "f3fa9ca7-399b-4d0b-86af-a05f47a8474b",
           name: formData.name,
           email: formData.email,
           message: formData.message,
           subject: `New Inquiry from ${formData.name}`,
-          // TO CUSTOMIZE THE EMAIL YOU RECEIVE:
-            from_name: "The Peterstouch Merchants Website Contact Form",
-            replyto: formData.email, // This lets you click "Reply" in Gmail to email the client back directly!
+          from_name: "The Peterstouch Merchants Website Contact Form",
+          replyto: formData.email,
         }),
       });
 
@@ -105,7 +97,7 @@ export default function Contact() {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
@@ -117,15 +109,14 @@ export default function Contact() {
       <div className="section-padding">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left Column */}
-          <div ref={leftRef}>
+          <div className="contact-left opacity-0">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-text-primary leading-[1.05] mb-6">
               Ready to start your next 
               <br />
               audio-visuals project?
             </h2>
             <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-8">
-              Tell us what you're building. We'll reply with a system plan and a
-              clear quote.
+              Tell us what you're building. We'll reply with a system plan and a clear quote.
             </p>
 
             <div className="space-y-4">
@@ -133,10 +124,9 @@ export default function Contact() {
                 <div className="w-10 h-10 rounded-full bg-cyan-accent/20 flex items-center justify-center">
                   <Mail size={18} className="text-cyan-accent" />
                 </div>
-                <span className="text-text-primary text-sm">
-                  thepeterstouch@gmail.com
-                </span>
+                <span className="text-text-primary text-sm">thepeterstouch@gmail.com</span>
               </div>
+              
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-cyan-accent/20 flex items-center justify-center">
                   <MapPin size={18} className="text-cyan-accent" />
@@ -146,29 +136,28 @@ export default function Contact() {
                 </span>
               </div>
 
-               <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full bg-cyan-accent/20 flex items-center justify-center">
                   <PhoneCall size={18} className="text-cyan-accent" />
                 </div>
-                <span className="text-text-primary text-sm">
-                  +234-814-994-6136
-                </span>
+                <span className="text-text-primary text-sm">+234-814-994-6136</span>
               </div>
             </div>
           </div>
 
           {/* Right Column - Form */}
-          <div ref={formRef}>
+          <div className="contact-right opacity-0">
             <form
               onSubmit={handleSubmit}
               className="glass-card rounded-xl p-6 md:p-8 border border-white/5"
             >
               <div className="space-y-5">
                 <div>
-                  <label className="block text-text-secondary text-sm mb-2">
+                  <label className="block text-text-secondary text-sm mb-2" htmlFor="name">
                     Name
                   </label>
                   <input
+                    id="name"
                     type="text"
                     name="name"
                     value={formData.name}
@@ -180,10 +169,11 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-text-secondary text-sm mb-2">
+                  <label className="block text-text-secondary text-sm mb-2" htmlFor="email">
                     Email
                   </label>
                   <input
+                    id="email"
                     type="email"
                     name="email"
                     value={formData.email}
@@ -195,10 +185,11 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-text-secondary text-sm mb-2">
+                  <label className="block text-text-secondary text-sm mb-2" htmlFor="message">
                     Message
                   </label>
                   <textarea
+                    id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
