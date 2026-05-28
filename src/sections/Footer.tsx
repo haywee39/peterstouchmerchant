@@ -1,4 +1,4 @@
-import { Facebook, MessageCircle, Instagram } from 'lucide-react';
+import { Facebook, MessageCircle, Instagram, ExternalLink } from 'lucide-react';
 
 const navLinks = [
   { label: 'Services', href: '#services' },
@@ -87,14 +87,18 @@ export default function Footer() {
         <div className="mt-12 pt-8 border-t border-white/5 text-center">
           <p className="text-text-secondary/60 text-xs leading-relaxed space-y-2">
             <span className="block mb-2">© 2025 The Peterstouch Merchants. All rights reserved.</span>
-            <span className="block">
-              <a href='https://haywee39.github.io/tagstechie/' target="_blank" rel="noreferrer" className="hover:text-cyan-accent transition-colors">
-                Developer: Tagstechie Solutions
-              </a>
-            </span>
-            <span className="block mt-1">
-              <a href='https://wa.me/2349056910840' target="_blank" rel="noreferrer" className="hover:text-cyan-accent transition-colors">
-                +234-905-691-0840
+            
+            {/* Flex wrapper to keep the icon and link perfectly bound together and centered */}
+            <span className="flex items-center justify-center">
+              <a 
+                href='https://haywee39.github.io/tagstechie/' 
+                target="_blank" 
+                rel="noreferrer" 
+                className="inline-flex items-center gap-1.5 hover:text-cyan-accent transition-colors"
+              >
+                
+                <span>Developer: Tagstechie Solutions</span>
+                <ExternalLink size={12} className="shrink-0 opacity-80" />
               </a>
             </span>
           </p>
