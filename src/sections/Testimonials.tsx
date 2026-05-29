@@ -7,25 +7,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 const testimonials = [
   {
-    quote: 'Zero drama under tight production clocks.',
-    text: "We handed The Peterstouch Merchants a brutal 6-hour load-in window for a three-city corporate exhibition. They didn't just meet the deadline—they delivered a flawlessly rigged, ground-stacked LED wall and a perfectly tuned audio array. Absolute professionals end-to-end",
-    name: 'Maya Chen',
-    role: 'Production Lead, Northwind Events',
-    avatar: 'MC',
+    quote: 'Elevating Our Worship Experience',
+    text: "The transformation of our sanctuary has been incredible. The new LED installation has completely elevated our worship experience, providing crystal-clear clarity for our congregation both in-person and for our online stream. The professionalism and attention to detail during the setup were exceptional.",
+    name: 'Pastor Daramola',
+    role: 'RCCG New Dawn Assembly, Ayobo',
+    avatar: 'PD',
   },
   {
-    quote: 'Flawless pixel alignment and color depth',
-    text: 'For a high-profile live broadcast, camera-friendly refresh rates and zero glare are non-negotiable. The Peterstouch team provided a massive curved LED canvas that looked incredibly sharp both in the venue and on the broadcast stream. Their attention to cabinet alignment is unmatched.For a high-profile live broadcast, camera-friendly refresh rates and zero glare are non-negotiable. The Peterstouch team provided a massive curved LED canvas that looked incredibly sharp both in the venue and on the broadcast stream. Their attention to cabinet alignment is unmatched.',
-    name: 'Jonas Reid',
-    role: 'Tour Manager, Atlas Live',
-    avatar: 'JR',
+    quote: 'A Sophisticated Display for a Prestigious Club',
+    text: 'We needed a sophisticated visual solution that matched the prestige of the Port Harcourt Club. The premium LED display installed in our main lounge is absolutely stunning. It delivers crisp imagery, operates flawlessly, and has drawn immense praise from our distinguished members.',
+    name: 'Barrister Briggs',
+    role: 'The President, Port Harcourt Club',
+    avatar: 'BB',
   },
   {
-    quote: 'Rock-solid stability when it matters most.',
-    text: 'Live concerts leave no room for error. The Peterstouch Merchants handled our main-stage playback and live camera mixing with absolute precision. Knowing they build real-time signal redundancy into their systems gave our production team complete peace of mind.',
-    name: 'Sofia Marin',
-    role: 'Creative Director, Pulse Agency',
-    avatar: 'SM',
+    quote: 'Exceptional Precision and Guest Engagement',
+    text: 'As an engineer, I highly appreciate precision and quality hardware. The external and indoor LED installations at our hotel have significantly enhanced our guest engagement and hospitality branding. The display brightness, seamless panels, and energy efficiency exceeded our expectations.',
+    name: 'Engr. Ibrahim',
+    role: 'M.D, Valentino Hotel & Suites',
+    avatar: 'EI',
   },
 ];
 
