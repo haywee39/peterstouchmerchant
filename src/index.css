@@ -6,18 +6,19 @@
 
 @layer base {
   :root {
+    /* Enhanced global variable contrast configurations */
     --background: 216 50% 4%;
-    --foreground: 213 35% 96%;
+    --foreground: 210 40% 98%;
     --card: 216 45% 8%;
-    --card-foreground: 213 35% 96%;
+    --card-foreground: 210 40% 98%;
     --popover: 216 45% 8%;
-    --popover-foreground: 213 35% 96%;
+    --popover-foreground: 210 40% 98%;
     --primary: 200 100% 65%;
     --primary-foreground: 216 50% 4%;
     --secondary: 216 35% 12%;
-    --secondary-foreground: 213 35% 96%;
+    --secondary-foreground: 210 40% 98%;
     --muted: 216 35% 12%;
-    --muted-foreground: 213 20% 65%;
+    --muted-foreground: 215 20% 75%;
     --accent: 200 100% 65%;
     --accent-foreground: 216 50% 4%;
     --destructive: 0 84.2% 60.2%;
@@ -34,21 +35,29 @@
     @apply border-border;
   }
   
-  html {
-    scroll-behavior: smooth;
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+    /* REMOVED scroll-behavior: smooth to fix the layout jerking entirely */
   }
   
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
     background-color: #050B14;
+    font-size: 16px;
+    line-height: 1.6; /* Perfectly spaced body copy readability */
+    color: #E2E8F0; /* Brighter secondary foreground */
   }
   
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    letter-spacing: -0.02em;
-    line-height: 0.95;
+    letter-spacing: -0.01em; /* Balanced spacing for bold titles */
+    line-height: 1.15;      /* Comfortably clear, conspicuous text spacing */
+    color: #FFFFFF;         /* Crisp premium white titles */
   }
   
   .font-mono {
@@ -59,13 +68,13 @@
 @layer components {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, #F4F7FB 0%, #4DB8FF 100%);
+    background-image: linear-gradient(135deg, #FFFFFF 0%, #4DB8FF 100%);
   }
   
   .glass-card {
-    background: rgba(11, 22, 38, 0.72);
-    border: 1px solid rgba(244, 247, 251, 0.12);
-    backdrop-filter: blur(12px);
+    background: rgba(11, 22, 38, 0.85); /* Slightly darker backing for superior textual contrast */
+    border: 1px solid rgba(244, 247, 251, 0.16);
+    backdrop-filter: blur(16px);
   }
   
   .accent-glow {
@@ -82,7 +91,7 @@
   }
   
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all duration-300;
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all duration-300 tracking-wide;
     background: #4DB8FF;
     color: #050B14;
   }
@@ -93,8 +102,8 @@
   }
   
   .btn-outline {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-medium transition-all duration-300 border;
-    border-color: rgba(77, 184, 255, 0.5);
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all duration-300 border tracking-wide;
+    border-color: rgba(77, 184, 255, 0.6);
     color: #4DB8FF;
   }
   
@@ -104,18 +113,18 @@
   }
   
   .label-mono {
-    @apply font-mono text-xs uppercase tracking-[0.12em] font-medium;
+    @apply font-mono text-xs uppercase tracking-[0.15em] font-semibold;
     color: #4DB8FF;
   }
 }
 
 @layer utilities {
   .text-primary-light {
-    color: #F4F7FB;
+    color: #FFFFFF; /* True clean crisp light contrast text */
   }
   
   .text-secondary-light {
-    color: #A7B3C2;
+    color: #CBD5E1; /* Elevated modern gray scale for premium visibility */
   }
   
   .bg-navy-primary {
@@ -135,6 +144,15 @@
   }
 }
 
+/* Force Graphics Processing Unit (GPU) Acceleration across pinned component layouts */
+.port-image-frame,
+.proc-img-card,
+.step-chip {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
 /* Noise overlay */
 .noise-overlay {
   position: fixed;
@@ -144,7 +162,7 @@
   height: 100%;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.04;
+  opacity: 0.03; /* Slightly softened to ensure pixel perfect typography clarity */
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }
@@ -170,5 +188,5 @@
 /* Selection styling */
 ::selection {
   background: rgba(77, 184, 255, 0.3);
-  color: #F4F7FB;
+  color: #FFFFFF;
 }

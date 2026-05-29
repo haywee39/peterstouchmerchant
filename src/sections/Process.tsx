@@ -45,6 +45,9 @@ export default function Process() {
           start: 'top top',
           end: '+=130%',
           pin: true,
+          pinSpacing: true,      // Stabilizes layout spacing in the DOM
+          anticipatePin: 1,      // Eliminates the entry jerk before the lock triggers
+          fastScrollEnd: true,   // Gracefully runs layout completions on quick scrolls
           scrub: 0.6,
         },
       });

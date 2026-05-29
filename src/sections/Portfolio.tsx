@@ -33,6 +33,9 @@ export default function Portfolio() {
           start: 'top top',
           end: '+=140%',
           pin: true,
+          pinSpacing: true,      // Keeps the DOM layout stable during pin
+          anticipatePin: 1,      // Smooths out the micro-jerk upon pinning
+          fastScrollEnd: true,   // Handles rapid scrolling gracefully
           scrub: 0.6,
         },
       });
