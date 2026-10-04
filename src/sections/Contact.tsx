@@ -132,7 +132,7 @@ export default function Contact() {
                   <MapPin size={18} className="text-cyan-accent" />
                 </div>
                 <span className="text-text-primary text-sm">
-                  3B, Remi Ibidapo Street, Ojokoro Lagos- Nigeria
+                  6, Lewu Street, Agege Pen-Cinema Lagos- Nigeria
                 </span>
               </div>
 
